@@ -1,0 +1,72 @@
+package wzm;
+
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Arrays;
+
+public class GroupAnagrams {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		
+	}
+	
+	/**
+	 * 
+	 * @param strs
+	 * @return
+	 */
+	
+	public static List<List<String>> groupAnagrams(String[] strs) {
+		
+		List<List<String>> stringList = new ArrayList<List<String>>();
+		
+		quickSort(strs, 0, strs.length - 1);
+		HashMap<HashMap<Character, Integer>, Integer> map = new HashMap<HashMap<Character, Integer>, Integer>();
+		for (String str : strs) {
+
+		}
+
+
+		return stringList;
+	}
+
+	private static void quickSort(String[] strs, int left, int right) {
+
+		int l = left;
+		int r = right;
+		String pivot = strs[left + (right - left >> 1)];
+
+		while (l <= r) {
+			while (strs[l].compareTo(pivot) < 0) {
+				l++;
+			}
+			while (strs[r].compareTo(pivot) > 0) {
+				r--;
+			}
+			if (l <= r) {
+				swap(strs[l], strs[r]);
+				l++;
+				r--;
+			}
+		}
+		if (l < right) {
+			quickSort(strs, l, right);
+		}
+		if (left < r) {
+			quickSort(strs, left, r);
+		}
+	}
+
+	private static void swap(String a, String b) {
+
+		String temp = a;
+		a = b;
+		b = temp;
+	}
+
+	private static void 
+}

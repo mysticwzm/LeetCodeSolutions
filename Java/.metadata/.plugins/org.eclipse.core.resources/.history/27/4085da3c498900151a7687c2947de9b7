@@ -1,0 +1,13 @@
+package wzm;
+
+public class InsertInterval {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+	
+	public static List<Interval> insert(List<Interval> intervals, Interval newInterval) {
+		
+	}
+}

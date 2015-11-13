@@ -1,0 +1,91 @@
+package wzm;
+
+public class WildcardMatching {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		System.out.println(isMatch("", "a"));
+		System.out.println(isMatch("", "*"));
+		System.out.println(isMatch("", ""));
+		System.out.println(isMatch("a", ""));
+	}
+
+	/**
+	 * 
+	 * @param s
+	 * @param p
+	 * @return
+	 */
+
+	public static boolean isMatch(String s, String p) {
+
+		while (p.indexOf("**") != -1) {
+			p = p.replace("**", "*");
+		}
+		if (s.equals("")) {
+			return p.equals("") || p.equals("*")
+		}
+		return isMatchRecursiveEdition(s, 0, p, 0);
+	}
+
+	private static boolean isMatchRecursiveEdition(String s, int indexS, String p, int indexP) {
+
+		if (indexS == s.length()) {
+			return indexP == p.length();
+		}
+		if (indexP == p.length()) {
+			return indexS == s.length();
+		}
+
+		if ('a' <= p.charAt(indexP) && p.charAt(indexP) <= 'z') {
+			return s.charAt(indexS) == p.charAt(indexP) && isMatchRecursiveEdition(s, indexS + 1, p, indexP + 1);
+		} else if (p.charAt(indexP) == '?') {
+			return isMatchRecursiveEdition(s, indexS + 1, p, indexP + 1);
+		} else {
+			while (indexS < s.length()) {
+				if (isMatchRecursiveEdition(s, indexS, p, indexP + 1)) {
+					return true;
+				}
+				indexS++;
+			}
+			return isMatchRecursiveEdition(s, indexS, p, indexP + 1);
+		}
+	}
+
+	private static boolean isMatchRecurrentEdition(String s, String p) {
+		
+		int indexS = 0;
+		int indexP = 0;
+
+		while (indexS != s.length() || indexP != p.length()) {
+			if (indexS == s.length()) {
+				return indexP == p.length();
+			}
+			if (indexP == p.length()) {
+				return indexS == s.length();
+			}
+			switch (p.charAt(indexP)) {
+				case '*' :
+					if (indexP == p.length() - 1) {
+						return true;
+					} else {
+						while (indexS < s.length()) {
+
+						}
+					}
+				case '?' :
+					indexP++;
+					indexS++;
+					break;
+				default:
+					if (s.charAt(indexS) == p.charAt(indexP)) {
+						indexP++;
+						indexS++;
+					} else {
+						return false;
+					}
+			}
+		}
+	}
+}
