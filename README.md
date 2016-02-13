@@ -1,4 +1,4 @@
 # LeetCodeSolutions
-My solutions of LeetCode
+My solutions to LeetCode algorithm problems
 
-Only Java version now, cpp and python version will be added soon...
+Only Java version so far, cpp and python version will be added soon...
